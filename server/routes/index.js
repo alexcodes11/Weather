@@ -7,6 +7,9 @@ const API_BASE_URL = process.env.API_BASE_URL;
 const API_NAME = process.env.API_NAME;
 const APIKEY = process.env.APIKEY;
 
+const API_URL = process.env.GOOGLE_URL;
+
+
 router.get("/", async (req, res) => {
   try {
     const params = new URLSearchParams({
@@ -21,4 +24,32 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/google", function (req, res) {
+  res.send(API_URL);
+}); 
+
 module.exports = router;
+
+/*
+const GOOGLE_BASE = process.env.GOOGLE_BASE;
+const GOOGLE_API_NAME = process.env.GOOGLE_API_NAME;
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+*/
+
+/*
+router.get("/google", async (req, res) => {
+  try {
+    const params = new URLSearchParams({
+      [GOOGLE_API_NAME]: GOOGLE_API_KEY,
+    });
+    const apiRes = await needle(
+      "get",
+      `${GOOGLE_BASE}?${params}&libraries=places&callback=initAutocomplete`
+    );
+    const data = apiRes.body;
+    res.send(data)
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
+*/
