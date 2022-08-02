@@ -8,7 +8,7 @@ const API_BASE_URL = process.env.API_BASE_URL;
 const API_NAME = process.env.API_NAME;
 const APIKEY = process.env.APIKEY;
 
-const API_URL = process.env.GOOGLE_URL;
+const API_URL = process.env.API_URL;
 
 // Cachcing 
 let cache = apicache.middleware
