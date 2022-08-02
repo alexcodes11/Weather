@@ -1,15 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const rateLimit = require('express-rate-limit')
-const path = require('path')
 require("dotenv").config();
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(cors());
-
-app.use(express.static(path.join(_dirname + "/public")))
 
 // Limit API Requests
 const limiter = rateLimit({
