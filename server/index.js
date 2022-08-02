@@ -20,9 +20,6 @@ app.set('trust proxy', 1)
 // Routes for my API
 app.use("/weather", require("./routes"));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../WeatherApp/build", "index.html"));
-});
 
 
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
