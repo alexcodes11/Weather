@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const needle = require("needle");
 const url = require("url");
+const apicache = require("apicache");
 
 const API_BASE_URL = process.env.API_BASE_URL;
 const API_NAME = process.env.API_NAME;
@@ -9,8 +10,10 @@ const APIKEY = process.env.APIKEY;
 
 const API_URL = process.env.GOOGLE_URL;
 
+// Cachcing 
+let cache = apicache.middleware
 
-router.get("/", async (req, res) => {
+router.get("/", cache('2 minutes'), async (req, res) => {
   try {
     const params = new URLSearchParams({
       [API_NAME]: APIKEY,
@@ -24,7 +27,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/google", function (req, res) {
+router.get("/google", cache('2 minutes'), function (req, res) {
   res.send(API_URL);
 }); 
 
